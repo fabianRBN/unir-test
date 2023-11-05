@@ -51,6 +51,35 @@ class TestCalculate(unittest.TestCase):
         self.assertEqual(0, self.calc.multiply(-1, 0))
         self.assertEqual(-2, self.calc.multiply(-1, 2))
 
+    def test_potentiation_method_returns_correct_result(self):
+        self.assertEqual(4, self.calc.potentiation(2, 2))
+        self.assertEqual(9, self.calc.potentiation(3, 2))
+        self.assertEqual(16, self.calc.potentiation(4, 2))
+        self.assertEqual(8, self.calc.potentiation(2, 3))
+    
+    def test_sqrt_method_returns_correct_result(self):
+        self.assertEqual(3, self.calc.sqrt(9))
+        self.assertEqual(4, self.calc.sqrt(16))
+        self.assertEqual(5, self.calc.sqrt(25))
+        self.assertEqual(2, self.calc.sqrt(4))
+    
+    def test_sqrt_method_fails_with_sqrt_by_negative(self):
+        self.assertRaises(TypeError, self.calc.sqrt, -2)
+        self.assertRaises(TypeError, self.calc.sqrt, -22)
+
+
+    def test_logarithm_method_returns_correct_result(self):
+        self.assertEqual(1, self.calc.logarithm(10))
+        self.assertEqual(1.40, self.calc.logarithm(25))
+        self.assertEqual(1.56, self.calc.logarithm(36))
+        self.assertEqual(1.26, self.calc.logarithm(18))
+
+    def test_logarithm_method_fails_with_logarithm_by_zero(self):
+        self.assertRaises(TypeError, self.calc.logarithm,  0)
+   
+    
+    
+
 
 if __name__ == "__main__":  # pragma: no cover
     unittest.main()
