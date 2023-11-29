@@ -1,7 +1,5 @@
 pipeline{
-    agent{
-        label "Built-In Node"
-    }
+    agent any
     stages{
         stage("A"){
             steps{
