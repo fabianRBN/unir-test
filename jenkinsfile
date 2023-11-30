@@ -51,6 +51,24 @@ pipeline{
                 }
             }
         }
+        stage('Build') {
+            steps {
+                // Ejecutar tu tarea de construcción aquí
+                // ...
+
+                // Después de la construcción, enviar correo electrónico
+                emailext(
+                    to: 'fabianRBN_95@hotmail.com', // Reemplaza con la dirección de correo electrónico del destinatario
+                    subject: 'Notificación de Jenkins',
+                    body: 'La construcción ha sido completada exitosamente.',
+                    mimeType: 'text/html', // Puedes cambiar a 'text/plain' si prefieres texto sin formato
+                    attachLog: true, // Adjunta el registro de la construcción como archivo adjunto
+                    compressLog: true, // Comprime el registro de la construcción antes de adjuntarlo
+                    replyTo: 'fabian95toapanta@gmail.com', // Dirección de correo electrónico para respuestas
+                    from: 'fabian95toapanta@gmail.com' // Dirección de correo electrónico del remitente
+                )
+            }
+        }
     }
     post{
         always{
