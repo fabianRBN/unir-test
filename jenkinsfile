@@ -3,22 +3,6 @@ pipeline{
         label "docker"
     }
     stages{
-        stage("A"){
-            steps{
-                echo "========executing A========"
-            }
-            post{
-                always{
-                    echo "========always========"
-                }
-                success{
-                    echo "========A executed successfully========"
-                }
-                failure{
-                    echo "========A execution failed========"
-                }
-            }
-        }
         stage('Run Docker PS') {
             steps {
                 script {
@@ -32,6 +16,7 @@ pipeline{
             }
         }
 
+
         stage('Build Project') {
             steps {
                 script {
@@ -39,6 +24,40 @@ pipeline{
                     dir(env.WORKSPACE) {
                         // Ejecuta la tarea del Makefile
                         sh 'make build'
+                    }
+                }
+            }
+        }
+
+        stage('Run Project') {
+            steps {
+                script {
+                   
+                    dir(env.WORKSPACE) {
+                        // Ejecuta la tarea del Makefile
+                        sh 'make run'
+                    }
+                }
+            }
+        }
+        stage('Test Unit Project') {
+            steps {
+                script {
+                   
+                    dir(env.WORKSPACE) {
+                        // Ejecuta la tarea del Makefile
+                        sh 'make test-unit'
+                    }
+                }
+            }
+        }
+        stage('Test Api Project') {
+            steps {
+                script {
+                   
+                    dir(env.WORKSPACE) {
+                        // Ejecuta la tarea del Makefile
+                        sh 'make test-api'
                     }
                 }
             }
