@@ -31,6 +31,20 @@ pipeline{
                 }
             }
         }
+
+        stage('Access Repository Resources') {
+            steps {
+                script {
+                    // Accede al directorio de trabajo (workspace)
+                    def workspaceDir = env.WORKSPACE
+                    echo "Workspace Directory: ${workspaceDir}"
+
+                    // Puedes realizar operaciones en el directorio de trabajo
+                    // Por ejemplo, listar los archivos/directorios en el repositorio
+                    sh "ls -la ${workspaceDir}"
+                }
+            }
+        }
     }
     post{
         always{
