@@ -19,6 +19,18 @@ pipeline{
                 }
             }
         }
+        stage('Run Docker PS') {
+            steps {
+                script {
+                    // Ejecuta el comando 'docker ps'
+                    def dockerPsOutput = sh(script: 'docker ps', returnStdout: true).trim()
+
+                    // Imprime la salida de 'docker ps'
+                    echo "Output of 'docker ps':"
+                    echo dockerPsOutput
+                }
+            }
+        }
     }
     post{
         always{
