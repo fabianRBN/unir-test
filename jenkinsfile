@@ -29,13 +29,13 @@ pipeline{
             }
         }
 
-        stage('Run Project') {
+        stage('Server Project') {
             steps {
                 script {
                    
                     dir(env.WORKSPACE) {
                         // Ejecuta la tarea del Makefile
-                        sh 'make run'
+                        sh 'make server'
                     }
                 }
             }
