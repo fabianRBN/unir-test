@@ -29,17 +29,6 @@ pipeline{
             }
         }
 
-        stage('Server Project') {
-            steps {
-                script {
-                   
-                    dir(env.WORKSPACE) {
-                        // Ejecuta la tarea del Makefile
-                        sh 'make server'
-                    }
-                }
-            }
-        }
         stage('Test Unit Project') {
             steps {
                 script {
