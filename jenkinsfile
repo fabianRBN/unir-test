@@ -59,7 +59,7 @@ pipeline{
         }
         success{
             echo "========pipeline executed successfully ========"
-            emailext body: 'Test', subject: 'Test', to: 'fabianRBN_95@hotmail.com'
+            mail bcc: '', body: 'Success Buil unir', cc: '', from: '', replyTo: '', subject: 'Notification Jenkins', to: 'fabianRBN_95@hotmail.com'
         }
         failure{
             echo "========pipeline execution failed========"
