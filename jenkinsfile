@@ -59,10 +59,12 @@ pipeline{
         }
         success{
             echo "========pipeline executed successfully ========"
-            mail bcc: '', body: 'Success Buil unir', cc: '', from: '', replyTo: '', subject: 'Notification Jenkins', to: 'fabianRBN_95@hotmail.com'
+            mail bcc: '', body: 'Success Build unir', cc: '', from: '', replyTo: '', subject: 'Notification Jenkins', to: 'fabianRBN_95@hotmail.com'
         }
         failure{
             echo "========pipeline execution failed========"
+            mail bcc: '', body: 'Faild Build unir', cc: '', from: '', replyTo: '', subject: 'Notification Jenkins', to: 'fabianRBN_95@hotmail.com'
+
         }
     }
 }
